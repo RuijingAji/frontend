@@ -10,20 +10,20 @@
 
 ---**文档片段**---
 超链接除了可以链接到文档外，也可以链接到 HTML 文档的特定部分（被称为文档片段）
-```
+```html
 <h2 id="Mailing_address">邮寄地址</h2>
 
 <p>要提供意见和建议，请将信件邮寄至<a href="contacts.html#Mailing_address">我们的地址</a>。</p>
 ```
 ---**电子邮件**---
-链接到电子邮件： `<a>` 元素+ mailto:URL
-```
+1)链接到电子邮件： `<a>` 元素+ mailto:URL
+```html
 <a href="mailto:nowhere@mozilla.org">向 nowhere 发邮件</a>
 向 nowhere 发邮件
 ```
-邮件中添加指定详细信息
+2)邮件中添加指定详细信息
 cc-抄送；subject-主题；body-邮件主体，例：
-```
+```html
 <a href="mailto:nowhere@mozilla.org?
 cc=name2@rapidtables.com&
 bcc=name3@rapidtables.com&subject=The%20subject%20of%20the%20email&body=The%20body%20of%20the%20email">
@@ -52,4 +52,62 @@ bcc=name3@rapidtables.com&subject=The%20subject%20of%20the%20email&body=The%20bo
 
 **缩略语**
 元素`<abbr>` 用来包裹一个缩略语或缩写，并用title提供缩写的解释，例：
+```html
 ><p>我们使用 <abbr title="超文本标记语言（Hyper text Markup Language）">HTML</abbr> 来组织网页文档。</p>
+```
+**标记联系方式**
+元素`<address>`用来标记联系方式，但通常只用来标记该网页编写者的联系方式
+```html
+<address>
+  <p>Page written by <a href="../authors/chris-mills/">Chris Mills</a>.</p>
+</address>
+```
+**上标和下标**
+日期、化学方程式、数学方程式上下标
+`<sub>`下标，化学配平
+`<sup>` 上标，平方
+```html
+<p>C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub></p>
+<p>如果X<sup>2</sup>的值是9，那么x的值必为-3或3</p>
+```
+<p>C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub></p>
+<p>如果X<sup>2</sup>的值是9，那么x的值必为-3或3</p>
+
+**展示计算机代码 记不住**
+相应学习内容：https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting
+
+**标记时间和日期 记不住**
+元素 `<time datetime="2016-01-20">2016年1月20日</time>`
+```
+<!-- 标准简单日期 -->
+<time datetime="2016-01-20">20 January 2016</time>
+<!-- 只包含年份和月份-->
+<time datetime="2016-01">January 2016</time>
+<!-- 只包含月份和日期 -->
+<time datetime="01-20">20 January</time>
+<!-- 只包含时间，小时和分钟数 -->
+<time datetime="19:30">19:30</time>
+<!-- 还可包含秒和毫秒 -->
+<time datetime="19:30:01.856">19:30:01.856</time>
+<!-- 日期和时间 -->
+<time datetime="2016-01-20T19:30">7.30pm, 20 January 2016</time>
+<!-- 含有时区偏移值的日期时间 -->
+<time datetime="2016-01-20T19:30+01:00">7.30pm, 20 January 2016 is 8.30pm in France</time>
+<!-- 调用特定的周 -->
+<time datetime="2016-W04">The fourth week of 2016</time>
+```
+## 网页基本结构（文档与网站架构）
+**页面的基本组成部分**
+1.页眉 `<header>`
+2.导航栏 `<nav>`
+3.主内容 `<main>`,其中可以有各种子内容区段，可用`<article>、<section>、<div> `等元素表示。
+4.侧边栏`<aside>`：常嵌套在 `<main>` 中
+5.页脚`<footer>`
+**页面布局细节**
+1.`<main> `存放每个页面独有的内容。每个页面上只能用一次 `<main>`，且直接位于 `<body>` 中，不要把它嵌套进其它元素。
+2.`<article>` 包围的内容即一篇文章，与页面其它部分无关。`<section> `与` <article> `类似，但 `<section> `更适用于组织页面使其按功能分块。
+3.`<aside>` 包含一些间接信息（术语条目、作者简介、相关链接等等）。
+4.`<header>` 是简介形式的内容。如果它是 `<body> `的子元素，表示网站的全局页眉。如果它是` <article>` 或`<section>` 的子元素，表示这些部分特有的页眉。
+5.`<nav> `包含页面主导航功能,不应包含二级链接内容。
+6.`<footer>` 包含页面的页脚部分。
+
